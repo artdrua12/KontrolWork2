@@ -1,0 +1,167 @@
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.button {
+    margin: 2%;
+    font-size: 3rem;
+    color: red;
+    background-color: yellow;
+    flex-basis: 40%;
+    flex-grow: 1;
+    min-width: 150px;
+    min-height: 100px;
+    max-height: 200px;
+    background-image: url(../images/82.jpg);
+    border-radius: 10px;
+}
+
+body {
+    background-image: url(../images/89.jpg);
+}
+
+section,
+main {
+    flex-basis: 10%;
+    background-image: url(../images/84.jpg);
+    border: red solid 1px;
+    flex-grow: 1;
+    justify-content: center;
+    align-self: stretch;
+}
+
+section div {
+    flex-basis: 100%;
+}
+
+
+/* для блоков--------------*/
+
+div.block {
+    flex-basis: 18%;
+    flex-grow: 1;
+    margin: 3px;
+    border: thin dotted #7e7e7e;
+    background-color: #e1ceb8;
+    max-height: 50%;
+    min-width: 180px;
+}
+
+#modal {
+    position: absolute;
+    display: none;
+}
+
+.flexChild {
+    border: solid red 2px;
+    flex-basis: 15%;
+    flex-grow: 1;
+    margin: 3px;
+}
+
+.divImg {
+    flex-basis: 100%;
+    height: 120px;
+    width: auto;
+    flex-grow: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+label.label:first-letter {
+    /*Для выбора первой буквы*/
+    font-size: 120%;
+    color: red;
+    font-style: italic;
+}
+
+
+/* for sticky*/
+
+.child {
+    width: 200px;
+    height: 200px;
+    padding-left: 7px;
+    margin: 30px;
+    font-size: 2rem;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+div.child:nth-child(odd) {
+    transform: rotate(-1deg);
+}
+
+div.child:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+div.child:nth-child(3n) {
+    transform: rotate(1deg);
+}
+
+div.child:hover {
+    transform: rotate(0deg) scale(1.25);
+    z-index: 10;
+    /*задержка*/
+    transition: 0.5s;
+}
+
+
+/* filtr*/
+
+.label,
+.labelFilter {
+    flex-basis: 50%;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 7px;
+    max-width: 50%
+}
+
+.labelFilter {
+    flex-basis: 100%
+}
+
+.input,
+.inputSlider {
+    flex-basis: 40%;
+    flex-shrink: 1;
+    flex-grow: 1;
+    border: 1px groove red;
+    border-radius: 3px;
+    padding-left: 5px;
+    background-color: white;
+    max-width: 100%;
+}
+
+.inputSlider {
+    flex-basis: 50%;
+    max-width: 200px;
+}
+
+
+/**/
+
+.formLabel {
+    flex-grow: 2;
+    flex-shrink: 1;
+    font-size: 2rem;
+    max-width: 40%;
+}
+
+.formInput {
+    flex-grow: 1;
+    flex-shrink: 1;
+    font-size: 2rem;
+}
+
+.formdiv {
+    flex-basis: 49%;
+    flex-grow: 1;
+    flex-shrink: 2;
+    min-width: 250px;
+}

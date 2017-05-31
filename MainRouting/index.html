@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>DronLand</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="scripts/styles/kendo.common.min.css">
+    <link rel="stylesheet" type="text/css" href="scripts/styles/kendo.moonlight.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css">
+    <link type="text/css" href="scripts/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
+
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <script src="scripts/jquery.easings.min.js"></script>
+    <script src="scripts/jquery.fullPage.min.js"></script>
+    <script src="scripts/kendo.all.min.js"></script>
+    <script src="scripts/start.js"></script>
+
+    <script src="scripts/modules/classFabrica.js"></script>
+    <script src="scripts/modules/admin.js"></script>
+    <script src="scripts/modules/form.js"></script>
+    <script src="scripts/modules/note.js"></script>
+    <script src="scripts/modules/begin.js"></script>
+
+</head>
+
+
+<body class="flex" id="particles-js">
+
+    <div id="fullpage">
+        <div class="section">
+            <div id="section1" class="flex">
+                <header>
+                    <div id="left"></div>
+                    <div id="right"></div>
+                    <div id="scrolling" class="flex">
+                        <article></article>
+                        <article></article>
+                        <article></article>
+                        <article></article>
+                        <article></article>
+                </header>
+
+                <section class="flex">
+                    <input type="button" id="clear" class="button detach" value="Clear">
+                    <input type="button" id="return" class="button" value="Return">
+                    <input type="button" id="admin" class="button detach" value="Admin">
+                    <input type="button" id="view" class="button detach" value="View">
+                    <input type="button" id="insert" class="button detach" value="Insert">
+                    <input type="button" id="apps" class="button detach" value="apps">
+
+
+                    <div id="filterTemplate">
+                        <div id="filter" class="flex">
+                            <fieldset>
+                                <legend> Filter </legend>
+                                <div class="flex">
+                                    <label for="name" class="labelFilter"> Name </label>
+                                    <input id="name" class="input" data-role="autocomplete" data-bind=" source: autocompleteArray , value: nameValue,
+                    events: { change: onChange }" />
+
+                                    <label for="model" class="labelFilter">Model</label>
+                                    <select data-bind="source: valueModelArray" class="select input" name="model"></select>
+                                    <input id="model" class="input" data-bind="value: modelAdd,
+                    events: { change: addModel }" />
+
+                                    <label for="year" class="labelFilter">Year</label>
+                                    <input id="year" data-role="slider" data-min="1990" data-max="2000" data-small-step="1" data-bind="value: yearNumber " class="inputSlider" />
+
+                                    <label for="mileage" class="labelFilter"> Mileage </label>
+                                    <select multiple data-bind="source: mileageArray, value: mileageNumber" class="select input"></select>
+
+                                    <label for="status" class="labelFilter">Status</label>
+                                    <div class="input">
+                                        <label><input type="radio" name="status" value="new"   data-bind="checked: statusValue" /> new   </label>
+                                        <label><input type="radio" name="status" value="used"  data-bind="checked: statusValue" /> used  </label>
+                                    </div>
+
+                                    <label for="price" class="labelFilter">Price</label>
+                                    <input id="price" data-role="slider" data-min="10000" data-max="70000" data-small-step="10000" data-bind=" value: priceNumber" class="inputSlider" />
+
+                                    <label for="transmission" class="labelFilter">Transmission</label>
+                                    <div class="input" name="transmission">
+                                        <label> <input type="radio" name="transmission" value="automat" 
+                                         data-bind="checked: transmissionValue" /> automat  </label>
+                                        <label> <input type="radio" name="transmission" value="mechanics" 
+                                        data-bind="checked: transmissionValue" /> mechanics  </label>
+                                    </div>
+
+                                    <label for="valEng" class="labelFilter">ValueEngine </label>
+                                    <select data-bind="source:valueEngineArray,value: valueEngine" class="select input" name="valEng"></select>
+
+                                </div>
+                            </fieldset>
+
+                            <button data-bind="click:filter" class=" button"> Filter </button>
+                            <button data-bind="click:reset" class=" button"> Reset </button>
+                        </div>
+                    </div>
+                </section>
+
+                <main id="main" class="flex">
+                    <div id="block" data-template="template" data-bind="source: dataSource" class="flex"></div>
+
+                    <script id="template" type="text/x-kendo-template">
+
+                        <div class="block" data-bind="attr: { id: id}" }>
+                            <fieldset>
+                                <legend data-bind=" text: id "></legend>
+                                <div class="flex">
+
+                                    <img width='150px' data-bind="style: { backgroundImage: image },events: { click: clickImg }" class="divImg ">
+
+                                    <label class="label ">Name</label>
+                                    <label class="input " data-bind="text: name "></label>
+
+                                    <label class="label ">Model</label>
+                                    <label class="input " data-bind="text: model "></label>
+
+                                    <label class="label ">Year</label>
+                                    <label class="input " data-bind="text: year "></label>
+
+                                    <label class="label ">Status</label>
+                                    <label class="input " data-bind="text: status "></label>
+
+                                    <label class="label ">Transmission</label>
+                                    <label class="input " data-bind="text: transmission "></label>
+
+                                    <label class="label ">ValueEngine</label>
+                                    <label class="input " data-bind="text: valueEngine "></label>
+
+                                    <label class="label ">Price</label>
+                                    <label class="input " data-bind="text: price "></label>
+
+                                </div class="flex ">
+                            </fieldset>
+                        </div>
+
+                    </script>
+                </main>
+
+                <div id="modal" class="flex"></div>
+
+                </div>
+            </div>
+            <div class="section" id="section2">
+                <div class="slide">
+                    <div id="slide1"></div>
+                </div>
+                <div class="slide">
+                    <div id="slide2" class="flex"></div>
+                    <content id="write" class="flex"></content>
+                </div>
+            </div>
+
+        </div>
+</body>
+
+</html>
